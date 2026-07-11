@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Search Results</title>
+  <style>
+    body { font-family: Arial; max-width: 600px; margin: 40px auto; padding: 20px; background: #fdf2f2; }
+    h1 { color: #c0392b; }
+    ul { list-style: none; padding: 0; }
+    li { background: white; padding: 15px; margin: 8px 0; border-radius: 8px;
+         border-left: 5px solid #c0392b; }
+    a { color: #c0392b; font-weight: bold; text-decoration: none; }
+    .empty { text-align: center; color: #7f1d1d; padding: 20px; }
+  </style>
+</head>
+<body>
+  <h1>🔍 Matching Donors</h1>
+  <% if (donors.length === 0) { %>
+    <div class="empty">😢 No donors found for this blood group and city.</div>
+  <% } %>
+  <ul>
+    <% donors.forEach(d => { %>
+      <li>
+        <b><%= d.name %></b><br>
+        Blood Group: <b><%= d.blood_group %></b><br>
+        City: <%= d.city %><br>
+        📞 <a href="tel:<%= d.phone %>"><%= d.phone %></a>
+      </li>
+    <% }) %>
+  </ul>
+  <p><a href="/">← Back to home</a></p>
+</body>
+</html>
